@@ -71,6 +71,16 @@ public class CharCreate {
         System.out.println(" ");
     }
 
+    public void BasicAttack (CharCreate player){
+        System.out.println("");
+    }
+
+    public void SpecialAttack (CharCreate player){
+        System.out.println("");
+    }
+
+
+
 
 
 

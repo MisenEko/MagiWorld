@@ -25,9 +25,9 @@ public class Game {
         if (job==1){
             player1 = new Warrior(1);
         } else if(job==2) {
-            player1 = new Mage(1);
-        } else if (job==3){
             player1 = new Rogue(1);
+        } else if (job==3){
+            player1 = new Mage(1);
         }
 
         /**
@@ -38,15 +38,19 @@ public class Game {
         if (job==1){
             player2 = new Warrior(2);
         } else if(job==2) {
-            player2 = new Mage(2);
-        } else if (job==3){
             player2 = new Rogue(2);
+        } else if (job==3){
+            player2 = new Mage(2);
         }
 
 
+        player1.SpecialAttack(player2);
 
+        System.out.println("HP player 1 après un spécial :"+player1.getHp());
 
+        player2.SpecialAttack(player1);
 
+        System.out.println("HP player 2 après son soin "+player2.getHp());
 
     }
 
