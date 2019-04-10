@@ -4,13 +4,12 @@ public class Warrior extends CharCreate {
 
 
 
-    public Warrior() {
+    public Warrior(int idPlayer) {
+        super();
+        id = idPlayer;
+        System.out.print("Woarg, je suis le Guerrier du Joueur " + idPlayer);
+        Intro();
     }
 
 
-    public String setShout(String shout, int Choix){
-        shout="je fais des test c'est pas cool";
-        this.shout = shout;
-        return this.shout;
-    }
 }

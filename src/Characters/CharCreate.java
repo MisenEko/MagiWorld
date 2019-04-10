@@ -8,14 +8,11 @@ public class CharCreate {
      * Les statistiques du personnage.
      */
 
-   protected int id, choix=0, lvl, str, agi, intel, job,hp, skillPoint, attBasic, attSpecial;
+   protected int id, lvl, str, agi, intel, job,hp, skillPoint, attBasic, attSpecial;
    protected String shout="";
    Scanner sc = new Scanner(System.in);
 
-    public CharCreate(int idJoueur)
-    {
-        this.id = idJoueur;
-    }
+
 
     public CharCreate() {
 
@@ -24,11 +21,6 @@ public class CharCreate {
         this.agi = agi;
         this.intel = intel;
 
-        /**
-         * Asking the choice of the player, checking his choice and get the right shout for the job.
-         */
-        //Choice(choix);
-        this.shout=setShout(shout, choix);
 
         /**
          * Getting all the stats for the character.
@@ -63,12 +55,14 @@ public class CharCreate {
         this.intel=setIntel(intel, skillPoint, lvl);
         this.skillPoint -= this.intel;
 
-        Intro();
+
     }
+
+    public CharCreate(int idPlayer){ id = idPlayer;   }
 
     protected void Intro() {
         System.out.println(
-                getShout()+" Joueur 1 niveau "
+                getShout()+" niveau "
                 +getLvl()+" je possède "
                 +getHp()+" de vitalité, "
                 +getStr()+" de force,  "
@@ -77,16 +71,6 @@ public class CharCreate {
         System.out.println(" ");
     }
 
-    protected int Choice(int choix){
-        System.out.println("Choisissez votre classe : (1. Guerrier, 2. Rodêur, 3 mage)");
-        do {
-            choix = sc.nextInt();
-
-            if (choix > 3) System.out.println("Veuillez choisir une classe entre 1 et 3");
-        }while (choix>3);
-        this.choix=choix;
-        return this.choix;
-    }
 
 
 
@@ -106,10 +90,6 @@ public class CharCreate {
         public int getJob() {
             return job;
          }
-
-        public int getChoix() {
-            return choix;
-        }
 
         public int getLvl() {return lvl;}
 
@@ -140,13 +120,6 @@ public class CharCreate {
     public void setAttSpecial(int attSpecial) {
         this.attSpecial = attSpecial;
     }
-
-
-
-    public void setChoix(int choix) {
-
-             this.choix = choix;
-        }
 
         public int setLvl(int lvl) {
 
@@ -211,22 +184,6 @@ public class CharCreate {
         }
         this.intel = intel;
         return this.intel;
-    }
-
-    public String setShout(String shout, int Choix) {
-        if (choix == 1){
-            shout="Woarg je suis le Guerrier";
-        } else if (choix == 2){
-            shout="Je suis le Rôdeur";
-        } else shout = "Abracadabra je suis le Mage";
-
-
-        this.shout = shout;
-        return shout;
-    }
-
-    public void setClasse(int job) {
-        this.job = job;
     }
 
     public void setHp(int hp) {

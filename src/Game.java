@@ -13,36 +13,41 @@ public class Game {
 
 
     public Game() {
-
-
-        /**
-         * Initializing the first character.
-         */
         CharCreate player1 = new CharCreate(1);
         CharCreate player2 = new CharCreate(2);
 
+
+        /**
+         * initializing the first character.
+         */
         System.out.println("Choisissez votre classe : (1. Guerrier, 2. Rodêur, 3 mage)");
         job=sc.nextInt();
         if (job==1){
-            player1 = new Warrior();
+            player1 = new Warrior(1);
         } else if(job==2) {
-            player1 = new Mage();
+            player1 = new Mage(1);
         } else if (job==3){
-            player1 = new Rogue();
+            player1 = new Rogue(1);
+        }
+
+        /**
+         * initializing the second character.
+         */
+        System.out.println("Choisissez votre classe : (1. Guerrier, 2. Rodêur, 3 mage)");
+        job=sc.nextInt();
+        if (job==1){
+            player2 = new Warrior(2);
+        } else if(job==2) {
+            player2 = new Mage(2);
+        } else if (job==3){
+            player2 = new Rogue(2);
         }
 
 
 
 
 
-        /**Warrior P1 = new Warrior();
-        System.out.println(P1.getShout()+" Joueur 1 niveau "+P1.getLvl()+" je possède "+P1.getHp()+" de vitalité, "
-                            +P1.getStr()+" de force,  "+P1.getAgi()+" d'agilité et "+P1.getIntel()+ " d'intelligence");
-        System.out.println(" ");
-        CharCreate P2 = new CharCreate(2);
-        System.out.println(P2.getShout()+" Joueur 2 niveau "+P2.getLvl()+" je possède "+P2.getHp()+" de vitalité, "
-                +P2.getStr()+" de force,  "+P2.getAgi()+" d'agilité et "+P2.getIntel()+ " d'intelligence");
-         */
+
     }
 
 
