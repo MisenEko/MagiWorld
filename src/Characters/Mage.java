@@ -1,6 +1,6 @@
 package Characters;
 
-public class Mage {
+public class Mage extends CharCreate{
 
     public Mage() {
     }

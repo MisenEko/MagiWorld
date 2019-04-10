@@ -8,11 +8,14 @@ public class CharCreate {
      * Les statistiques du personnage.
      */
 
-   protected int choix=0, lvl, str, agi, intel, job,hp, skillPoint;
+   protected int id, choix=0, lvl, str, agi, intel, job,hp, skillPoint, attBasic, attSpecial;
    protected String shout="";
+   Scanner sc = new Scanner(System.in);
 
-
-    Scanner sc = new Scanner(System.in);
+    public CharCreate(int idJoueur)
+    {
+        this.id = idJoueur;
+    }
 
     public CharCreate() {
 
@@ -21,36 +24,28 @@ public class CharCreate {
         this.agi = agi;
         this.intel = intel;
 
-
-
         /**
          * Asking the choice of the player, checking his choice and get the right shout for the job.
          */
-
-        System.out.println("Choisissez votre classe : (1. Guerrier, 2. Rodêur, 3 mage)");
-        do {
-            this.choix = sc.nextInt();
-
-            if (choix > 3) System.out.println("Veuillez choisir une classe entre 1 et 3");
-        }while (choix>3);
+        //Choice(choix);
+        this.shout=setShout(shout, choix);
 
         /**
          * Getting all the stats for the character.
          */
+
         System.out.println("Niveau du personnage ?");
         this.lvl=sc.nextInt();
 
         /**
-         * adding lvl to skillPoint since the lvl determine the number of skill points you need for a stats.
+         * adding lvl to skillPoint since the lvl determine the number of skill points you need for a stat.
          */
         this.skillPoint = this.lvl;
-
-
         this.lvl = setLvl(lvl);
         this.hp = this.lvl*5;
 
         /**
-         * adding str / agi / intel witch check to be sure they're enough skillpoint to add the stats.
+         * adding str / agi / intel with check to be sure they're enough skillpoint to add to the stats.
          */
 
         System.out.println("Force du personnage ? ");
@@ -68,49 +63,85 @@ public class CharCreate {
         this.intel=setIntel(intel, skillPoint, lvl);
         this.skillPoint -= this.intel;
 
+        Intro();
     }
+
+    protected void Intro() {
+        System.out.println(
+                getShout()+" Joueur 1 niveau "
+                +getLvl()+" je possède "
+                +getHp()+" de vitalité, "
+                +getStr()+" de force,  "
+                +getAgi()+" d'agilité et "
+                +getIntel()+ " d'intelligence");
+        System.out.println(" ");
+    }
+
+    protected int Choice(int choix){
+        System.out.println("Choisissez votre classe : (1. Guerrier, 2. Rodêur, 3 mage)");
+        do {
+            choix = sc.nextInt();
+
+            if (choix > 3) System.out.println("Veuillez choisir une classe entre 1 et 3");
+        }while (choix>3);
+        this.choix=choix;
+        return this.choix;
+    }
+
+
 
 
     /** getter
      *
      * @return
+     *
      */
-         public int getJob() {
+
+        public int getAttBasic() { return attBasic;}
+
+        public int getAttSpecial() {return attSpecial;}
+
+        public int getId() { return id;}
+
+        public int getJob() {
             return job;
          }
 
-
-         public int getChoix() {
+        public int getChoix() {
             return choix;
         }
 
-        public int getLvl() {
-            return lvl;
-        }
+        public int getLvl() {return lvl;}
 
-        public int getStr() {
-            return str;
-        }
+        public int getStr() {return str;}
 
-        public int getAgi() {
-            return agi;
-        }
+        public int getAgi() {return agi;}
 
         public int getIntel() {
             return intel;
         }
 
-        public String getShout(int choix) {
+        public String getShout() {
             return shout;
         }
 
-         public int getHp() {
+        public int getHp() {
              return hp;
          }
+
 
     /**
      * Setter
      */
+    public void setAttBasic(int ttBasic) {
+        this.attBasic = ttBasic;
+    }
+
+    public void setAttSpecial(int attSpecial) {
+        this.attSpecial = attSpecial;
+    }
+
+
 
     public void setChoix(int choix) {
 
@@ -182,15 +213,16 @@ public class CharCreate {
         return this.intel;
     }
 
-    public void setShout(String shout, int Choix) {
+    public String setShout(String shout, int Choix) {
         if (choix == 1){
-            shout="warrrg";
+            shout="Woarg je suis le Guerrier";
         } else if (choix == 2){
-            shout="Je suis le rôdeur";
-        } else shout = "Abracadabra je suis le mage";
+            shout="Je suis le Rôdeur";
+        } else shout = "Abracadabra je suis le Mage";
 
 
         this.shout = shout;
+        return shout;
     }
 
     public void setClasse(int job) {

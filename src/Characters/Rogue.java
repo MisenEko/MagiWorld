@@ -1,6 +1,6 @@
 package Characters;
 
-public class Rogue {
+public class Rogue extends CharCreate {
     public Rogue() {
     }
 }
