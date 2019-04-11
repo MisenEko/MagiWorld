@@ -61,16 +61,18 @@ public class Game {
             Combat(player1, player2);
             if(player2.getHp()<=0) {
                 check=false;
-                System.out.println("Le Joueur 1 n'a plus de vitalité, il perd donc la partie et le Joueur 2 gagne.");
+                System.out.println("Le Joueur 2 n'a plus de vitalité, il perd donc la partie et le Joueur 2 gagne.");
+                break;
             }
-        }
-        while(check==false){
+
+
             System.out.println("Joueur 2 (" + player2.getHp() + " vitalité) veulliez choisir votre action (1: Attaque Basique," +
                     " 2 : Attaque Spéciale");
             Combat(player2, player1);
             if(player1.getHp()<=0) {
                 check=false;
-                System.out.println("Le Joueur 2 n'a plus de vitalité, il perd donc la partie et le Joueur 1 gagne.");
+                System.out.println("Le Joueur 1 n'a plus de vitalité, il perd donc la partie et le Joueur 1 gagne.");
+                break;
             }
         }
     }
