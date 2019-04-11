@@ -9,18 +9,13 @@ public class CharCreate {
      * Les statistiques du personnage.
      */
 
-   protected int id, lvl, str, agi, intel, job,hp, skillPoint, attBasic, attSpecial;
+   protected int id, lvl, str, agi, intel,hp, skillPoint, attBasic, attSpecial;
    protected String shout="";
    Scanner sc = new Scanner(System.in);
 
 
 
     public CharCreate() {
-
-        this.lvl = lvl;
-        this.str = str;
-        this.agi = agi;
-        this.intel = intel;
 
 
         /**
@@ -43,10 +38,12 @@ public class CharCreate {
 
         this.intel=setIntel(intel, skillPoint, lvl);
         this.skillPoint -= this.intel;
-
-
     }
 
+    /**
+     * Introduction of the character with the spécifique shout.
+     * @param idPlayer
+     */
     public CharCreate(int idPlayer){ id = idPlayer;   }
 
     protected void Intro() {
@@ -67,12 +64,6 @@ public class CharCreate {
     public void SpecialAttack (CharCreate player){
         System.out.println("");
     }
-
-
-
-
-
-
 
     /** getter
      *

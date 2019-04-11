@@ -11,10 +11,15 @@ public class Rogue extends CharCreate {
         Intro();
     }
 
+    /**
+     * Settings all attack of the Rogue
+     * @param player
+     */
     public void BasicAttack (CharCreate player){
         super.BasicAttack(player);
         System.out.println("Joueur "+id+" utilise Tir à l'Arc et inflige "+agi+ " de dégats.");
         player.setHp(player.getHp()-agi);
+        System.out.println("Joueur "+player.getId()+" a perdu "+agi+" point de vie et il lui en reste "+player.getHp()+".");
 
     }
 
