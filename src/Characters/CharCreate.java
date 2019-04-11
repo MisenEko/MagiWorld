@@ -86,27 +86,17 @@ public class CharCreate {
 
         public int getId() { return id;}
 
-        public int getJob() {
-            return job;
-         }
-
         public int getLvl() {return lvl;}
 
         public int getStr() {return str;}
 
         public int getAgi() {return agi;}
 
-        public int getIntel() {
-            return intel;
-        }
+        public int getIntel() {return intel;}
 
-        public String getShout() {
-            return shout;
-        }
+        public String getShout() {return shout;}
 
-        public int getHp() {
-             return hp;
-         }
+        public int getHp() {return hp;}
 
 
     /**
@@ -118,7 +108,7 @@ public class CharCreate {
         boolean checkInput, check;
             do{
                 try{System.out.println("Niveau du personnage ? ");
-                    this.lvl=sc.nextInt();
+                    lvl=sc.nextInt();
                     checkInput=true;
 
                 }catch (InputMismatchException e){
@@ -140,7 +130,7 @@ public class CharCreate {
                 lvl=sc.nextInt();
 
             }
-        }while (!check);
+        }while (check);
         this.lvl = lvl;
         return this.lvl;
     }
@@ -150,7 +140,7 @@ public class CharCreate {
 
         do{
             try{System.out.println("Force du personnage ? ");
-                this.str=sc.nextInt();
+                str=sc.nextInt();
                 checkInput=true;
 
             }catch (InputMismatchException e){
@@ -180,7 +170,7 @@ public class CharCreate {
 
         do{
             try{System.out.println("Agilité du personnage ? ");
-                this.agi=sc.nextInt();
+                agi=sc.nextInt();
                 checkInput=true;
 
             }catch (InputMismatchException e){
@@ -207,7 +197,7 @@ public class CharCreate {
 
         do{
             try{System.out.println("L'Intelligence du personnage ? ");
-                this.intel=sc.nextInt();
+                intel=sc.nextInt();
                 checkInput=true;
 
             }catch (InputMismatchException e){
