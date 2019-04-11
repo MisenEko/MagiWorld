@@ -1,5 +1,6 @@
 package Characters;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CharCreate {
@@ -24,39 +25,22 @@ public class CharCreate {
 
         /**
          * Getting all the stats for the character.
-         */
-
-        System.out.println("Niveau du personnage ?");
-        this.lvl=sc.nextInt();
-
-        /**
+         *
          * adding lvl to skillPoint since the lvl determine the number of skill points you need for a stat.
          */
-
-
         this.lvl = setLvl(lvl);
-
-
-
         this.skillPoint = this.lvl;
         this.hp = this.lvl*5;
 
         /**
          * adding str / agi / intel with check to be sure they're enough skillpoint to add to the stats.
          */
-
-        System.out.println("Force du personnage ? ");
-        this.str=sc.nextInt();
         this.str = setStr(str, skillPoint, lvl);
         this.skillPoint -= this.str;
 
-        System.out.println("Agiltié du personnage ?");
-        this.agi=sc.nextInt();
         this.agi=setAgi(agi, skillPoint,lvl);
         this.skillPoint -= this.agi;
 
-        System.out.println("Intelligence du personnage ?");
-        this.intel=sc.nextInt();
         this.intel=setIntel(intel, skillPoint, lvl);
         this.skillPoint -= this.intel;
 
@@ -128,19 +112,25 @@ public class CharCreate {
     /**
      * Setter
      */
-    public void setAttBasic(int ttBasic) {
-        this.attBasic = ttBasic;
-    }
 
-    public void setAttSpecial(int attSpecial) {
-        this.attSpecial = attSpecial;
-    }
 
-        public int setLvl(int lvl) {
+    public int setLvl(int lvl) {
+        boolean checkInput, check;
+            do{
+                try{System.out.println("Niveau du personnage ? ");
+                    this.lvl=sc.nextInt();
+                    checkInput=true;
 
-        boolean check=true;
+                }catch (InputMismatchException e){
+                    System.out.println("Le niveau doit être un nombre compris entre 1 et 100");
+                    sc.next();
+                    checkInput=false;
 
-        while (check == true) {
+                }
+            }while(!checkInput);
+
+
+        do {
             if ((lvl >= 1) && (lvl <= 100)) {
                 check = false;
             } else {
@@ -150,16 +140,29 @@ public class CharCreate {
                 lvl=sc.nextInt();
 
             }
-        }
+        }while (!check);
         this.lvl = lvl;
         return this.lvl;
     }
 
     public int setStr(int str, int skillPoint, int lvl) {
+        boolean checkInput,  check=true;
 
-        boolean check=true;
+        do{
+            try{System.out.println("Force du personnage ? ");
+                this.str=sc.nextInt();
+                checkInput=true;
 
-        while (check == true) {
+            }catch (InputMismatchException e){
+                sc.next();
+                checkInput=false;
+                System.out.println("La force doit être un nombre qui se trouver entre 0 et "+skillPoint);
+            }
+        }while(!checkInput);
+
+
+
+        while (check) {
             if (str > skillPoint) {
                 System.out.println("La force : " + str + " ne peut pas être supérieur au niveau du personnage " + this.lvl);
                 System.out.println("Veuillez redonner la force de votre personnage qui doit être inférieur ou égale à "+skillPoint);
@@ -173,7 +176,19 @@ public class CharCreate {
     }
 
     public int setAgi(int agi, int skillPoint, int lvl) {
-        boolean check=true;
+        boolean checkInput,  check=true;
+
+        do{
+            try{System.out.println("Agilité du personnage ? ");
+                this.agi=sc.nextInt();
+                checkInput=true;
+
+            }catch (InputMismatchException e){
+                sc.next();
+                checkInput=false;
+                System.out.println("L'Agilité doit être un nombre qui se trouver entre 0 et "+skillPoint);
+            }
+        }while(!checkInput);
 
         while (check == true) {
             if (agi > skillPoint) {
@@ -188,7 +203,19 @@ public class CharCreate {
     }
 
     public int setIntel(int intel, int skillPoint, int lvl) {
-        boolean check=true;
+        boolean checkInput,  check=true;
+
+        do{
+            try{System.out.println("L'Intelligence du personnage ? ");
+                this.intel=sc.nextInt();
+                checkInput=true;
+
+            }catch (InputMismatchException e){
+                sc.next();
+                checkInput=false;
+                System.out.println("L'Intelligence doit être un nombre qui se trouver entre 0 et "+skillPoint);
+            }
+        }while(!checkInput);
 
         while (check == true) {
             if (intel > skillPoint) {
@@ -204,4 +231,12 @@ public class CharCreate {
     public void setHp(int hp) {
         this.hp = hp;
     }
+    public void setAttBasic(int ttBasic) {
+        this.attBasic = ttBasic;
+    }
+
+    public void setAttSpecial(int attSpecial) {
+        this.attSpecial = attSpecial;
+    }
+
 }
