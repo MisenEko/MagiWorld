@@ -3,46 +3,54 @@ import Characters.Mage;
 import Characters.Rogue;
 import Characters.Warrior;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Game {
-
     private int job, attack;
     boolean check = true;
     Scanner sc = new Scanner(System.in);
-
-
 
     public Game() {
         CharCreate player1 = new CharCreate(1);
         CharCreate player2 = new CharCreate(2);
 
-
         /**
          * initializing the first character.
          */
-        System.out.println("Choisissez votre classe : (1. Guerrier, 2. Rodêur, 3 mage)");
-        job=sc.nextInt();
-        if (job==1){
-            player1 = new Warrior(1);
-        } else if(job==2) {
-            player1 = new Rogue(1);
-        } else if (job==3){
-            player1 = new Mage(1);
-        }
+        do {
+            try {
+                System.out.println("Joueur 1 Choisissez votre classe : (1. Guerrier, 2. Rôdeur, 3 Mage)");
+                job = sc.nextInt();
+                if (job == 1) player1 = new Warrior(1);
+                else if (job == 2) player1 = new Rogue(1);
+                else if (job == 3) player1 = new Mage(1);
+            }catch (InputMismatchException e){
+                sc.next();
+                System.out.println("Vous devez saisir un nombre, correspondant aux classes proposé"+
+                        " 1. Guerrier, 2. Rôdeur, 3 Mage");
+                System.out.println(" ");
+            }
+        }while (job <1 || job > 3);
 
         /**
          * initializing the second character.
          */
-        System.out.println("Choisissez votre classe : (1. Guerrier, 2. Rodêur, 3 mage)");
-        job=sc.nextInt();
-        if (job==1){
-            player2 = new Warrior(2);
-        } else if(job==2) {
-            player2 = new Rogue(2);
-        } else if (job==3){
-            player2 = new Mage(2);
-        }
+        do{
+            try {
+                System.out.println("Joueur 2 Choisissez votre classe : (1. Guerrier, 2. Rôdeur, 3 mage)");
+                job = sc.nextInt();
+                if (job == 1) player2 = new Warrior(2);
+                else if (job == 2) player2 = new Rogue(2);
+                else if (job == 3) player2 = new Mage(2);
+            }catch (InputMismatchException e){
+                sc.next();
+                System.out.println("Vous devez saisir un nombre, correspondant aux classes proposé"+
+                        " 1. Guerrier, 2. Rôdeur, 3 Mage");
+                System.out.println(" ");
+            }
+         }while (job <1 || job > 3);
+
 
         /**
          * Start of the fight between the 2 players.
@@ -51,15 +59,20 @@ public class Game {
             System.out.println("Joueur 1 (" + player1.getHp() + " vitalité) veulliez choisir votre action (1: Attaque Basique," +
                     " 2 : Attaque Spéciale");
             Combat(player1, player2);
-            if(player2.getHp()<=0)check=false;
+            if(player2.getHp()<=0) {
+                check=false;
+                System.out.println("Le Joueur 1 n'a plus de vitalité, il perd donc la partie et le Joueur 2 gagne.");
+            }
+        }
+        while(check==false){
             System.out.println("Joueur 2 (" + player2.getHp() + " vitalité) veulliez choisir votre action (1: Attaque Basique," +
                     " 2 : Attaque Spéciale");
             Combat(player2, player1);
-            if(player1.getHp()<=0)check=false;
+            if(player1.getHp()<=0) {
+                check=false;
+                System.out.println("Le Joueur 2 n'a plus de vitalité, il perd donc la partie et le Joueur 1 gagne.");
+            }
         }
-
-
-
     }
 
 
