@@ -32,8 +32,8 @@ public class CharCreate {
         /**
          * adding lvl to skillPoint since the lvl determine the number of skill points you need for a stat.
          */
-        this.skillPoint = this.lvl;
         this.lvl = setLvl(lvl);
+        this.skillPoint = this.lvl;
         this.hp = this.lvl*5;
 
         /**

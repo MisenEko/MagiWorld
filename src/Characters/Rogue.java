@@ -17,4 +17,11 @@ public class Rogue extends CharCreate {
         player.setHp(player.getHp()-agi);
 
     }
+
+    public void SpecialAttack (CharCreate player){
+        super.SpecialAttack(player);
+        System.out.println("Joueur "+id+" utilise Concentration et gagne "+(lvl/2)+" en agilité");
+        agi+=lvl/2;
+
+    }
 }

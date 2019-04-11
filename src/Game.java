@@ -7,7 +7,8 @@ import java.util.Scanner;
 
 public class Game {
 
-    int job;
+    private int job, attack;
+    boolean check = true;
     Scanner sc = new Scanner(System.in);
 
 
@@ -43,15 +44,46 @@ public class Game {
             player2 = new Mage(2);
         }
 
+        /**
+         * Start of the fight between the 2 players.
+         */
+        while(check==true) {
+            System.out.println("Joueur 1 (" + player1.getHp() + " vitalité) veulliez choisir votre action (1: Attaque Basique," +
+                    " 2 : Attaque Spéciale");
+            Combat(player1, player2);
+            if(player2.getHp()<=0)check=false;
+            System.out.println("Joueur 2 (" + player2.getHp() + " vitalité) veulliez choisir votre action (1: Attaque Basique," +
+                    " 2 : Attaque Spéciale");
+            Combat(player2, player1);
+            if(player1.getHp()<=0)check=false;
+        }
 
-        player1.SpecialAttack(player2);
 
-        System.out.println("HP player 1 après un spécial :"+player1.getHp());
 
-        player2.SpecialAttack(player1);
+    }
 
-        System.out.println("HP player 2 après son soin "+player2.getHp());
 
+
+
+
+    /**
+     * Method to simulate the fight between 2 players.
+     * @param player1
+     * @param player2
+     */
+
+    public void Combat(CharCreate player1, CharCreate player2){
+        do {
+            attack=sc.nextByte();
+            if (attack == 1) {
+                player1.BasicAttack(player2);
+            } else if (attack == 2) {
+                player1.SpecialAttack(player2);
+            } else {
+                System.out.println("Veuillez selectionner une des deux attaques. 1 pour l'attaque de basique ou" +
+                        "2 pour l'attaque spécial");
+            }
+        }while ((attack < 1) || (attack > 2));
     }
 
 

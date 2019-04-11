@@ -24,6 +24,6 @@ public class Warrior extends CharCreate {
         player.setHp(player.getHp()-str*2);
         System.out.println("Joueur "+player.getId()+" a perdu "+str*2+" HP et il lui reste "+player.getHp());
         hp = hp - (str/2);
-        System.out.println("Joueur "+id+" s'inflite à lui même "+str/2+" dégats et lui reste "+hp+" HP");
+        System.out.println("Joueur "+id+" s'inflige à lui même "+str/2+" dégats et lui reste "+hp+" HP");
     }
 }
