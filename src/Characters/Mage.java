@@ -4,14 +4,14 @@ public class Mage extends CharCreate {
 
 
 
-    public Mage(int idPlayer) {
+    public Mage(int idPlayer, int lvl, int str, int agi, int intel,int hp) {
         super();
         id = idPlayer;
         System.out.print("Abracadabra, je suis le Mage du Joueur " + idPlayer);
         Intro();
     }
     /**
-     * Settings all attack of the Mage
+     * Settings all attacks of the Mage
      * @param player
      */
     public void BasicAttack (CharCreate player){

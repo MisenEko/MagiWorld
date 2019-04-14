@@ -4,7 +4,7 @@ public class Rogue extends CharCreate {
 
 
 
-    public Rogue(int idPlayer) {
+    public Rogue(int idPlayer, int lvl, int str, int agi, int intel,int hp) {
         super();
         id = idPlayer;
         System.out.print("Chuuuut, je suis le Rôgue du Joueur " + idPlayer);
@@ -12,7 +12,7 @@ public class Rogue extends CharCreate {
     }
 
     /**
-     * Settings all attack of the Rogue
+     * Settings all attacks of the Rogue
      * @param player
      */
     public void BasicAttack (CharCreate player){

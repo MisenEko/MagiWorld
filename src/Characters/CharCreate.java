@@ -30,7 +30,7 @@ public class CharCreate {
         /**
          * adding str / agi / intel with check to be sure they're enough skillpoint to add to the stats.
          */
-        this.str = setStr(str, skillPoint, lvl);
+        this.str = setStr(str, skillPoint, lvl,hp);
         this.skillPoint -= this.str;
 
         this.agi=setAgi(agi, skillPoint,lvl);
@@ -69,9 +69,10 @@ public class CharCreate {
      *
      * @return
      *
+     * @param player2
      */
 
-        public int getAttBasic() { return attBasic;}
+        public int getAttBasic(Warrior player2) { return attBasic;}
 
         public int getAttSpecial() {return attSpecial;}
 
@@ -95,7 +96,7 @@ public class CharCreate {
      */
 
 
-    public int setLvl(int lvl) {
+    protected int setLvl(int lvl) {
         boolean checkInput, check;
             do{
                 try{System.out.println("Niveau du personnage ? ");
@@ -115,7 +116,7 @@ public class CharCreate {
             if ((lvl >= 1) && (lvl <= 100)) {
                 check = false;
             } else {
-                System.out.println("Le level doit se trouver entre 1 et 100");
+                System.out.println("Le Niveau doit se trouver entre 1 et 100");
                 check = true;
                 System.out.println("Niveau du personnage ?");
                 lvl=sc.nextInt();
@@ -126,18 +127,23 @@ public class CharCreate {
         return this.lvl;
     }
 
-    public int setStr(int str, int skillPoint, int lvl) {
+    protected int setStr(int str, int skillPoint, int lvl, int hp) {
         boolean checkInput,  check=true;
 
         do{
             try{System.out.println("Force du personnage ? ");
                 str=sc.nextInt();
+                while(str<0){
+                    System.out.println("La force doit être un nombre positif");
+                    System.out.println("Force du personnage ?");
+                    str=sc.nextInt();
+                }
                 checkInput=true;
 
             }catch (InputMismatchException e){
                 sc.next();
                 checkInput=false;
-                System.out.println("La force doit être un nombre qui se trouver entre 0 et "+skillPoint);
+                System.out.println("La Force doit être un nombre qui se trouver entre 0 et "+skillPoint);
             }
         }while(!checkInput);
 
@@ -145,8 +151,8 @@ public class CharCreate {
 
         while (check) {
             if (str > skillPoint) {
-                System.out.println("La force : " + str + " ne peut pas être supérieur au niveau du personnage " + this.lvl);
-                System.out.println("Veuillez redonner la force de votre personnage qui doit être inférieur ou égale à "+skillPoint);
+                System.out.println("La Force : " + str + " ne peut pas être supérieur au niveau du personnage " + this.lvl);
+                System.out.println("Veuillez redonner la Force de votre personnage qui doit être inférieur ou égale à "+skillPoint);
                 str = sc.nextInt();
                 }else check = false;
         }
@@ -156,12 +162,17 @@ public class CharCreate {
 
     }
 
-    public int setAgi(int agi, int skillPoint, int lvl) {
+    protected int setAgi(int agi, int skillPoint, int lvl) {
         boolean checkInput,  check=true;
 
         do{
             try{System.out.println("Agilité du personnage ? ");
                 agi=sc.nextInt();
+                while(agi<0){
+                    System.out.println("L'agilité doit être un nombre positif");
+                    System.out.println("Agilité du personnage ?");
+                    agi=sc.nextInt();
+                }
                 checkInput=true;
 
             }catch (InputMismatchException e){
@@ -173,8 +184,8 @@ public class CharCreate {
 
         while (check == true) {
             if (agi > skillPoint) {
-                System.out.println("L'agilité : " + agi + " ne peut pas être supérieur au niveau du personnage " + this.lvl);
-                System.out.println("Veuillez redonner l'agilité de votre personnage qui doit être inférieur ou égale à "+skillPoint);
+                System.out.println("L'Agilité : " + agi + " ne peut pas être supérieur au niveau du personnage " + this.lvl);
+                System.out.println("Veuillez redonner l'Agilité de votre personnage qui doit être inférieur ou égale à "+skillPoint);
                 agi = sc.nextInt();
             }else check = false;
         }
@@ -183,12 +194,17 @@ public class CharCreate {
         return this.agi;
     }
 
-    public int setIntel(int intel, int skillPoint, int lvl) {
+    protected int setIntel(int intel, int skillPoint, int lvl) {
         boolean checkInput,  check=true;
 
         do{
             try{System.out.println("L'Intelligence du personnage ? ");
                 intel=sc.nextInt();
+                while(intel<0);{
+                    System.out.println("L'Intelligence doit être un nombre positif");
+                    System.out.println("L'Intelligence du personnage ?");
+                    intel=sc.nextInt();
+                }
                 checkInput=true;
 
             }catch (InputMismatchException e){
@@ -201,7 +217,7 @@ public class CharCreate {
         while (check == true) {
             if (intel > skillPoint) {
                 System.out.println("L'intelligence : " + intel + " ne peut pas être supérieur au niveau du personnage " + this.lvl);
-                System.out.println("Veuillez redonner l'intelligence de votre personnage qui doit être inférieur ou égale à "+skillPoint);
+                System.out.println("Veuillez redonner l'Intelligence de votre personnage qui doit être inférieur ou égale à "+skillPoint);
                 intel = sc.nextInt();
             }else check = false;
         }
@@ -209,15 +225,9 @@ public class CharCreate {
         return this.intel;
     }
 
-    public void setHp(int hp) {
+    protected void setHp(int hp) {
         this.hp = hp;
     }
-    public void setAttBasic(int ttBasic) {
-        this.attBasic = ttBasic;
-    }
 
-    public void setAttSpecial(int attSpecial) {
-        this.attSpecial = attSpecial;
-    }
 
 }

@@ -4,7 +4,7 @@ public class Warrior extends CharCreate {
 
 
 
-    public Warrior(int idPlayer) {
+    public Warrior(int idPlayer, int lvl, int str, int agi, int intel,int hp) {
         super();
         id = idPlayer;
         System.out.print("Woarg, je suis le Guerrier du Joueur " + idPlayer);

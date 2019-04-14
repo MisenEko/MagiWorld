@@ -22,9 +22,10 @@ public class Game {
             try {
                 System.out.println("Joueur 1 Choisissez votre classe : (1. Guerrier, 2. Rôdeur, 3 Mage)");
                 job = sc.nextInt();
-                if (job == 1) player1 = new Warrior(1);
-                else if (job == 2) player1 = new Rogue(1);
-                else if (job == 3) player1 = new Mage(1);
+
+                if (job == 1) player1 = new Warrior(1, player1.getLvl(), player1.getStr(),player1.getAgi(),player1.getIntel(),player1.getHp());
+                else if (job == 2) player1 = new Rogue(1, player1.getLvl(), player1.getStr(),player1.getAgi(),player1.getIntel(),player1.getHp());
+                else if (job == 3) player1 = new Mage(1, player1.getLvl(), player1.getStr(),player1.getAgi(),player1.getIntel(),player1.getHp());
             }catch (InputMismatchException e){
                 sc.next();
                 System.out.println("Vous devez saisir un nombre, correspondant aux classes proposé"+
@@ -40,9 +41,9 @@ public class Game {
             try {
                 System.out.println("Joueur 2 Choisissez votre classe : (1. Guerrier, 2. Rôdeur, 3 mage)");
                 job = sc.nextInt();
-                if (job == 1) player2 = new Warrior(2);
-                else if (job == 2) player2 = new Rogue(2);
-                else if (job == 3) player2 = new Mage(2);
+                if (job == 1) player2 = new Warrior(2, player2.getLvl(), player2.getStr(),player2.getAgi(),player2.getIntel(),player2.getHp());
+                else if (job == 2) player2 = new Rogue(2, player2.getLvl(), player2.getStr(),player2.getAgi(),player2.getIntel(),player2.getHp());
+                else if (job == 3) player2 = new Mage(2, player2.getLvl(), player2.getStr(),player2.getAgi(),player2.getIntel(),player2.getHp());
             }catch (InputMismatchException e){
                 sc.next();
                 System.out.println("Vous devez saisir un nombre, correspondant aux classes proposé"+
@@ -61,7 +62,7 @@ public class Game {
             Combat(player1, player2);
             if(player2.getHp()<=0) {
                 check=false;
-                System.out.println("Le Joueur 2 n'a plus de vitalité, il perd donc la partie et le Joueur 2 gagne.");
+                System.out.println("Le Joueur 2 n'a plus de vitalité, il perd donc la partie et le Joueur 1 gagne.");
                 break;
             }
 
@@ -71,7 +72,7 @@ public class Game {
             Combat(player2, player1);
             if(player1.getHp()<=0) {
                 check=false;
-                System.out.println("Le Joueur 1 n'a plus de vitalité, il perd donc la partie et le Joueur 1 gagne.");
+                System.out.println("Le Joueur 1 n'a plus de vitalité, il perd donc la partie et le Joueur 2 gagne.");
                 break;
             }
         }
