@@ -30,13 +30,13 @@ public class CharCreate {
         /**
          * adding str / agi / intel with check to be sure they're enough skillpoint to add to the stats.
          */
-        this.str = setStr(str, skillPoint, lvl,hp);
+        this.str = setStr(str, skillPoint);
         this.skillPoint -= this.str;
 
-        this.agi=setAgi(agi, skillPoint,lvl);
+        this.agi=setAgi(agi, skillPoint);
         this.skillPoint -= this.agi;
 
-        this.intel=setIntel(intel, skillPoint, lvl);
+        this.intel=setIntel(intel,skillPoint);
         this.skillPoint -= this.intel;
     }
 
@@ -45,6 +45,22 @@ public class CharCreate {
      * @param idPlayer
      */
     public CharCreate(int idPlayer){ id = idPlayer;   }
+
+    /**
+     * Constructor for test
+     * @param lvl
+     * @param hp
+     * @param str
+     * @param agi
+     * @param intel
+     */
+    public CharCreate(int lvl, int hp, int str, int agi, int intel ){
+        this.lvl=lvl;
+        this.hp = hp;
+        this.str = str;
+        this.agi = agi;
+        this.intel=intel;
+    }
 
     protected void Intro() {
         System.out.println(
@@ -127,7 +143,7 @@ public class CharCreate {
         return this.lvl;
     }
 
-    protected int setStr(int str, int skillPoint, int lvl, int hp) {
+    protected int setStr(int str, int skillPoint) {
         boolean checkInput,  check=true;
 
         do{
@@ -162,7 +178,7 @@ public class CharCreate {
 
     }
 
-    protected int setAgi(int agi, int skillPoint, int lvl) {
+    protected int setAgi(int agi, int skillPoint) {
         boolean checkInput,  check=true;
 
         do{
@@ -194,15 +210,15 @@ public class CharCreate {
         return this.agi;
     }
 
-    protected int setIntel(int intel, int skillPoint, int lvl) {
+    protected int setIntel(int intel, int skillPoint) {
         boolean checkInput,  check=true;
 
         do{
-            try{System.out.println("L'Intelligence du personnage ? ");
+            try{System.out.println("Intelligence du personnage ? ");
                 intel=sc.nextInt();
-                while(intel<0);{
+                while(intel<0){
                     System.out.println("L'Intelligence doit être un nombre positif");
-                    System.out.println("L'Intelligence du personnage ?");
+                    System.out.println("Intelligence du personnage ?");
                     intel=sc.nextInt();
                 }
                 checkInput=true;
@@ -216,11 +232,12 @@ public class CharCreate {
 
         while (check == true) {
             if (intel > skillPoint) {
-                System.out.println("L'intelligence : " + intel + " ne peut pas être supérieur au niveau du personnage " + this.lvl);
+                System.out.println("L'Intelligence : " + intel + " ne peut pas être supérieur au niveau du personnage " + this.lvl);
                 System.out.println("Veuillez redonner l'Intelligence de votre personnage qui doit être inférieur ou égale à "+skillPoint);
                 intel = sc.nextInt();
             }else check = false;
         }
+
         this.intel = intel;
         return this.intel;
     }
