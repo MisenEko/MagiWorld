@@ -5,16 +5,24 @@ import java.util.Scanner;
 
 public class CharCreate {
 
-    /**
-     * Les statistiques du personnage.
-     */
 
+    /**
+     * @param id = name of the player
+     * @param lvl = his level
+     * @param str = his strenght
+     * @param agi = his agility
+     * @param intel = his intelligence
+     * @param hp = his vitality
+     * @param skillpoint = how many skillpoints he has after setting his strenght, agility or intelligence
+     */
    protected int id, lvl, str, agi, intel,hp, skillPoint, attBasic, attSpecial;
    protected String shout="";
    Scanner sc = new Scanner(System.in);
 
 
-
+    /**
+     * Constructor to create the character
+     */
     public CharCreate() {
 
 
@@ -85,10 +93,10 @@ public class CharCreate {
      *
      * @return
      *
-     * @param player2
+     *
      */
 
-        public int getAttBasic(Warrior player2) { return attBasic;}
+        public int getAttBasic() { return attBasic;}
 
         public int getAttSpecial() {return attSpecial;}
 
